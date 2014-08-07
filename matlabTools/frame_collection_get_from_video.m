@@ -10,7 +10,7 @@ function gray_frames_video = frame_collection_get_from_video(vidFile)
     vidHeight = vid.Height; 
     vidWidth = vid.Width; 
     nChannels = 3; 
-%     fr = vid.FrameRate;
+    % fr = vid.FrameRate;
     len = vid.NumberOfFrames;
     
     temp = struct('cdata', ...
