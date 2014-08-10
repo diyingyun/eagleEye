@@ -1,4 +1,4 @@
-function scrollfig(x, y, len_y)
+function scrollfig(x, y, index_group)
 
 % Created by Evan Brooks, evan.brooks@wpafb.af.mil
 %
@@ -14,11 +14,13 @@ function scrollfig(x, y, len_y)
 
 % create new figure window
 f = figure;
-set(f,'doublebuffer', 'on', 'resize', 'off')
+set(f,'doublebuffer', 'on', 'resize', 'on');
 
 % set columns of plots
-cols = 2;
- 
+cols = 5;
+
+len_y = length(index_group);  
+
 % determine required rows of plots
 rows = ceil(len_y/cols);
 
@@ -49,10 +51,17 @@ end
 len = len_y; 
 
 % make plots   
-
 for i = 1 : len
-    axes(a{i}), plot(x, y(i).brightValue), title([num2str(i) 'th']), xlabel('frame number'), ylabel('bright value'); 
-end 
+    axes(a{i}), plot(x, y(index_group(i)).brightValue), ...     
+        title([num2str(index_group(i)) 'th']), ...
+        xlabel('frame number'), ylabel('bright value');             
+end  
+
+% for i = 1 : len
+%     axes(a{i}), plot(x, y{i}), ...     
+%         title([num2str(index_group(i)) 'th']), ...
+%         xlabel('frame number'), ylabel('bright value');             
+% end                
 
 % axes(a{1}), plot(x,y{1}), title('sine'), xlabel('x'), ylabel('sin(x)')
 % axes(a{2}), plot(x,y{2}), title('cosine'), xlabel('x'), ylabel('cos(x)')
